@@ -1,4 +1,4 @@
-1.
+--1.
     membro(Nome, IdMemb, Pais, Cidade, DataNasc):
         » Chaves Primárias: 		IdMemb;
         » Chaves Candidatas:		IdMemb;
@@ -35,7 +35,7 @@
         » Chaves Estrangeiras:		Não tem;
 
 
-2.
+--2.
     create database Fas_de_Policiais with
         owner = admin
         encoding = 'UTF8'
@@ -112,8 +112,8 @@
     );
 
 
-3.
-    a)
+--3.
+    --a)
     insert into membro values ('Darwin Nunez', 'ogoleador', 'Uruguai', 'Artigas', '1999-06-24');
     insert into membro values ('Rafael Silva', 'oleitor', 'Portugal', 'Vila Franca de Xira', '1993-05-17');
     insert into membro values ('Odisseas Vlachodimos', 'oguardiao', 'Alemanha', 'Stuttgart', '1994-04-26');
@@ -135,7 +135,7 @@
     insert into membro values ('Mile Svilar', 'oredes', 'Belgica', 'Antuerpia', '1999-08-27');
     insert into membro values ('Franco Cervi', 'oanao', 'Argentina', 'San Lorenzo', '1994-05-26');
 
-    b)
+    --b)
     insert into livro values ('978-4-4859-8723-0', 'O Hipnotista');
     insert into livro values ('978-5-1427-1466-4', 'O Assassino no Expresso Oriente');
     insert into livro values ('978-3-5685-7315-5', 'O Misterioso Caso de Styles');
@@ -201,7 +201,7 @@
     insert into genero values ('978-1-1607-8153-4', 'drama');
     insert into genero values ('978-1-1607-8153-4', 'romance');
 
-    c)
+    --c)
     insert into amigo values ('ojovem', 'ogoleador');
     insert into amigo values ('ojovem', 'oleitor');
     insert into amigo values ('ojovem', 'oguardiao');
@@ -235,7 +235,7 @@
     insert into amigo values ('oleitor', 'odetetive');
     insert into amigo values ('olesionado', 'oimpostor');
 
-    d)
+    --d)
     insert into genero values ('978-4-4859-8723-0', 'policial');
     insert into genero values ('978-4-4859-8723-0', 'misterio');
     insert into genero values ('978-5-1427-1466-4', 'policial');
@@ -263,27 +263,27 @@
     insert into genero values ('978-1-1607-8153-4', 'romance');
 
 
-4.
-    a)
+--4.
+    --a)
     select distinct autor.Nome
         from genero natural inner join autoria natural inner join autor
         where Genero like ‘drama’;
 
-    b)
+    --b)
     select distinct membro.Nome
         from (autoria natural inner join autor) inner join (gosta natural
 inner join membro)
             using(ISBN)
     where autor.Nome like ‘Agatha Christie’;
 
-    c)
+    --c)
     select distinct membro.Nome
         from (membro natural inner join gosta) inner join (autoria natural
     inner join autor)
             using(ISBN)
         where membro.Pais = autor.Pais;
 
-    d)
+    --d)
     select distinct membro.Nome
         from membro natural inner join genero
     except
@@ -293,7 +293,7 @@ inner join membro)
                 using(ISBN)
         where autor.Nome like ‘Agatha Christie’;
 
-    e)
+    --e)
     select distinct membro.Nome
         from membro
     except
@@ -309,7 +309,7 @@ inner join membro)
         from membro
         where IdMemb like ‘oleitor’;
 
-    f)
+    --f)
     with amigos as (
         select distinct membro.IdMemb, membro.DataNasc
             from membro inner join amigo on IdMemb = IdMemb2
@@ -324,7 +324,7 @@ inner join membro)
     from membro where IdMemb like ‘oleitor’) as leitor
         where amigos.DataNasc > leitor.DataNasc;
 
-    g)
+    --g)
     select distinct membro.Nome
         from (membro natural inner join gosta) inner join (autoria natural
     inner join autor)
@@ -337,7 +337,7 @@ inner join membro)
             using (ISBN)
         where autor.Nome like ‘Francisco Jose Viegas’;
 
-    h)
+    --h)
     select distinct membro.Nome
         from (membro natural inner join gosta) inner join (autoria natural
     inner join autor)
@@ -350,7 +350,7 @@ inner join membro)
             using(ISBN)
         where autor.Nome like ‘Francisco Jose Viegas’;
 
-    i)
+    --i)
     select count(*)
         from(
             (select distinct membro.Nome
@@ -362,7 +362,7 @@ inner join membro)
                 where IdMemb2 like 'oleitor'))
         as nAmigos;
 
-    j)
+    --j)
     with informa as (
         select distinct amigos.Nome, sum(nAmigos)
             from (
@@ -381,7 +381,7 @@ inner join membro)
                 from informa) as tabela
                 where informa.sum = tabela.maximo;
 
-    k)
+    --k)
     with leitor as (
         with expr as (
             select distinct membro.IdMemb, count(ISBN) as nLivros
@@ -406,12 +406,12 @@ inner join membro)
                         where IdMemb1 like leitor.idMemb) as amigos)
             as amigos inner join membro on amigos.Id = membro.IdMemb;
 
-    l)
+    --l)
     select livro.Titulo, count(Genero)
         from livro natural inner join genero
     group by livro.Titulo;
 
-    m)
+    --m)
     select gostos.Titulo, gostos,nGostos, generos.nGeneros
         from (
             (select distinct Titulo, ISBN, count(IdMemb) as nGostos
@@ -423,7 +423,7 @@ inner join membro)
             group by ISBN) as generos using(ISBN)
         );
 
-    n)
+    --n)
     select livros.Nome, livros.nLivros, generos.nGeneros, gostos.nGostos
         from (
             (select autor.Nome, count(ISBN) as nLivros
@@ -438,7 +438,7 @@ inner join membro)
                 from autor natural inner join autoria natural inner join gosta
             group by autor.Nome) as gostos);
 
-    o)
+    --o)
     select amigos.IdMemb, livros.Nome, livros.cont as nLivros, amigos.cont as nAmigos
         from (
             (select membro.IdMemb, membro.Nome, count(gosta.ISBN) as cont
@@ -451,7 +451,7 @@ inner join membro)
             using(IdMemb)
         );
 
-    p)
+    --p)
     with dados as (
         select distinct amigos.Nome, sum(nAmigos)
             from (
@@ -469,7 +469,7 @@ inner join membro)
             natural inner join dados
         where dados.sum = tabela.cont;
 
-    q)
+    --q)
     select distinct Titulo
         from livro natural inner join gosta natural inner join (
             select membro.IdMemb
