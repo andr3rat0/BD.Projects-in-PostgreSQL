@@ -1,38 +1,38 @@
 --1.
-    membro(Nome, IdMemb, Pais, Cidade, DataNasc):
-        » Chaves Primárias: 		IdMemb;
-        » Chaves Candidatas:		IdMemb;
-        » Chaves Estrangeiras:		Não tem;
+    --membro(Nome, IdMemb, Pais, Cidade, DataNasc):
+        --» Chaves Primárias: 		    IdMemb;
+        --» Chaves Candidatas:		    IdMemb;
+        --» Chaves Estrangeiras:		Não tem;
 
-    amigo(IdMemb1, IdMemb2):
-        » Chaves Primárias:		    (IdMemb1, IdMemb2);
-        » Chaves Candidatas:		(IdMemb1, IdMemb2);
-        » Chaves Estrangeiras:		IdMemb1, IdMemb2;
+    --amigo(IdMemb1, IdMemb2):
+        --» Chaves Primárias:		    (IdMemb1, IdMemb2);
+        --» Chaves Candidatas:		    (IdMemb1, IdMemb2);
+        --» Chaves Estrangeiras:		IdMemb1, IdMemb2;
 
-    livro(ISBN, Titulo):
-        » Chaves Primárias:		    ISBN;
-        » Chaves Candidatas:		ISBN;
-        » Chaves Estrangeiras:		Não tem;
+    --livro(ISBN, Titulo):
+        --» Chaves Primárias:		    ISBN;
+        --» Chaves Candidatas:		    ISBN;
+        --» Chaves Estrangeiras:		Não tem;
 
-    gosta(IdMemb, ISBN):
-        » Chaves Primárias:		    (IdMemb, ISBN);
-        » Chaves Candidatas:		(IdMemb, ISBN);
-        » Chaves Estrangeiras:		IdMemb, ISBN;
+    --gosta(IdMemb, ISBN):
+        --» Chaves Primárias:		    (IdMemb, ISBN);
+        --» Chaves Candidatas:		    (IdMemb, ISBN);
+        --» Chaves Estrangeiras:		IdMemb, ISBN;
 
-    genero(ISBN, Genero):
-        » Chaves Primárias:		    (ISBN, Genero);
-        » Chaves Candidatas:		(ISBN, Genero);
-        » Chaves Estrangeiras:		ISBN;
+    --genero(ISBN, Genero):
+        --» Chaves Primárias:		    (ISBN, Genero);
+        --» Chaves Candidatas:		    (ISBN, Genero);
+        --» Chaves Estrangeiras:		ISBN;
 
-    autoria(ISBN, CodA):
-        » Chaves Primárias:		    (ISBN, CodA);
-        » Chaves Candidatas:		(ISBN, CodA);
-        » Chaves Estrangeiras:		ISBN, CodA;
+    --autoria(ISBN, CodA):
+        --» Chaves Primárias:		    (ISBN, CodA);
+        --» Chaves Candidatas:		    (ISBN, CodA);
+        --» Chaves Estrangeiras:		ISBN, CodA;
 
-    autor(CodA, Nome, Pais):
-        » Chaves Primárias:		    CodA;
-        » Chaves Candidatas:		CodA;
-        » Chaves Estrangeiras:		Não tem;
+    --autor(CodA, Nome, Pais):
+        --» Chaves Primárias:		    CodA;
+        --» Chaves Candidatas:		    CodA;
+        --» Chaves Estrangeiras:		Não tem;
 
 
 --2.
